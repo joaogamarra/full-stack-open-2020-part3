@@ -32,4 +32,7 @@ personSchema.set('toJSON', {
 	},
 })
 
+mongoose.set('useCreateIndex', true)
+mongoose.set('useFindAndModify', false)
+
 module.exports = mongoose.model('Person', personSchema)
