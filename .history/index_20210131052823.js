@@ -87,18 +87,11 @@ app.delete('/api/persons/:id', (request, response, next) => {
 		.catch((error) => next(error))
 })
 
-app.get('/info', (request, response, next) => {
+app.get('/info', (request, response) => {
 	const date = new Date()
-	Person.estimatedDocumentCount({})
-		.then((total) => {
-			response.send(`
-        <p>Phonebook has info for ${total} people</p>
+	response.send(`
+        <p>Phonebook has info for ${persons.length} people</p>
         <p>${date}</p>`)
-		})
-		.catch((err) => {
-			console.error(err)
-			next(err)
-		})
 })
 
 const unknownEndpoint = (request, response) => {
@@ -121,7 +114,6 @@ const errorHandler = (error, request, response, next) => {
 
 app.use(errorHandler)
 
-// eslint-disable-next-line no-undef
 const PORT = process.env.PORT
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`)

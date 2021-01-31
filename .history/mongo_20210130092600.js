@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 
-/* eslint-disable no-undef*/
 if (process.argv.length < 3) {
 	console.log('Please provide the password as an argument: node mongo.js <password>')
 	process.exit(1)

@@ -87,18 +87,11 @@ app.delete('/api/persons/:id', (request, response, next) => {
 		.catch((error) => next(error))
 })
 
-app.get('/info', (request, response, next) => {
+app.get('/info', (request, response) => {
 	const date = new Date()
-	Person.estimatedDocumentCount({})
-		.then((total) => {
-			response.send(`
-        <p>Phonebook has info for ${total} people</p>
+	response.send(`
+        <p>Phonebook has info for ${persons.length} people</p>
         <p>${date}</p>`)
-		})
-		.catch((err) => {
-			console.error(err)
-			next(err)
-		})
 })
 
 const unknownEndpoint = (request, response) => {
