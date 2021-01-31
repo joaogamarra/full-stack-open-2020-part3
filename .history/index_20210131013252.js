@@ -49,10 +49,7 @@ app.post('/api/persons', (request, response, next) => {
 		.then((savedPerson) => {
 			response.json(savedPerson.toJSON())
 		})
-		.catch((error) => {
-			console.log(error)
-			next(error)
-		})
+		.catch((error) => next(error))
 })
 
 app.get('/api/persons/:id', (request, response, next) => {

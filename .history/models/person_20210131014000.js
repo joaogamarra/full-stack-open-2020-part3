@@ -18,11 +18,9 @@ mongoose
 	})
 
 const personSchema = new mongoose.Schema({
-	name: { type: String, minlength: 3, required: true, unique: true },
-	number: { type: String, minlength: 8, required: true },
+	name: { type: String, required: true, unique: true },
+	number: { type: String, required: true },
 })
-
-personSchema.plugin(uniqueValidator)
 
 personSchema.set('toJSON', {
 	transform: (document, returnedObject) => {
